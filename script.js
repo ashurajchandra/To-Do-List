@@ -2,27 +2,44 @@ let tasks = [];
 const tasksList = document.getElementById("list");
 const addTaskInputBox = document.getElementById("add-task");
 
-
-
-var count = 0;
-
+ 
+   var count = 0;
 function addTodo (task) {
+ 
+  count++;
+  let itemcount= document.getElementById('count').innerHTML = `Total items: ${count} `;
+  var att5= document.createAttribute("name");
+  att5.value= `${count}`;
+    
+  
 
-
-    count++;
-    let itemcount= document.getElementById('count').innerHTML = `${count} items`;
-    var att5= document.createAttribute("name");
-    att5.value= `${count}`;
-
+   
+     
   tasks.push(task);
+
   renderList();
+  
 }
 
 function deleteTodo (taskId) {
-  const newTasks = tasks.filter(function (task) {
-    return task.id !== taskId;
-  });
 
+ 
+  count--;
+  let itemcount= document.getElementById('count').innerHTML = `Total items: ${count} `;
+  var att5= document.createAttribute("name");
+  att5.value= `${count}`;
+    
+
+
+
+
+  const newTasks = tasks.filter(function (task) {
+    
+    
+    return task.id !== taskId;
+    
+  });
+  
   tasks = newTasks;
   renderList();
 }
@@ -39,7 +56,9 @@ function renderList() {
       <button data-taskId="${task.id}" data-test="test" class="delete">Delete</button>
     `;
     tasksList.appendChild(li);
+    addTaskInputBox.value = '';
   }
+ 
 }
 
 function checkTodo (taskId) {
