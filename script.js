@@ -5,13 +5,13 @@ const addTaskInputBox = document.getElementById("add-task");
  
    var count = 0;
 function addTodo (task) {
- 
+
   count++;
   let itemcount= document.getElementById('count').innerHTML = `Total items: ${count} `;
   var att5= document.createAttribute("name");
   att5.value= `${count}`;
     
-  
+ 
 
    
      
@@ -51,8 +51,9 @@ function renderList() {
     const task = tasks[i];
 
     li.innerHTML = `
-      <input type="checkbox" id="${task.id}" />
-      <label for="${task.id}">${task.text}</label>
+       
+         <input type="checkbox" class="check" id="${task.id}" />
+      <label class="list-label" for="${task.id}">${task.text}</label>
       <button data-taskId="${task.id}" data-test="test" class="delete">Delete</button>
     `;
     tasksList.appendChild(li);
@@ -81,6 +82,9 @@ function initialize() {
   document.addEventListener('click', handleClick);
   document.addEventListener('keyup', function (e) {
     const text = e.target.value;
+    if(text==''){
+     return window.alert("Null string encounterd");
+    }
     if (e.key === 'Enter') {
     console.log("initialize -> text", text)
 
